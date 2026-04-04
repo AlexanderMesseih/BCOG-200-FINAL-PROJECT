@@ -17,3 +17,49 @@ Takes team results alongside estimated constructor budgets and calculates a roug
 
 ### 3. `detect_condition_tendencies(team_name)`
 Looks at a team's historical results broken down by race conditions (wet, dry, mixed) and circuit type to spot any consistent patterns that don't show up in the overall standings.
+
+
+## Planned functions
+
+### `fetch_team_season_stats(team_name, year_range)`
+Pulls race-by-race data for a given constructor across a range of seasons. Returns summary stats including average finish position, points per race, and DNF rate.
+
+### `compare_performance_vs_budget(teams, season)`
+Takes team results alongside estimated constructor budgets and calculates a rough efficiency score — who's getting the most out of what they're spending.
+
+### `detect_condition_tendencies(team_name)`
+Looks at a team's historical results broken down by race conditions (wet, dry, mixed) and circuit type to identify patterns that don't show up in overall standings.
+
+---
+
+## Step 2 progress — data collection
+
+### Data sources identified
+
+- **Ergast F1 API** — race results, lap times, DNF reasons (2015–2024)
+- **Constructor budget estimates** — Forbes, Motorsport.com annual reports
+- **Weather/condition data** — still sourcing, likely OpenF1 *(pending)*
+
+### Planned data schema
+
+```python
+race_result = {
+    "team_name": str,
+    "season": int,
+    "race_id": str,
+    "finish_position": int,
+    "points": float,
+    "dnf": bool,
+    "condition": "wet" | "dry" | "mixed",  # TBD — depends on data source
+    "circuit_type": str
+}
+```
+
+### Next step
+Write `fetch_team_season_stats()` around this schema and test against 2023 season data.
+
+---
+
+## Notes
+- Budget figures are estimates from public sources and press reporting — not official
+- Condition classification method TBD (manual tagging vs. weather API)
