@@ -1,5 +1,4 @@
-# BCOG-200-FINAL-PROJECT
-# F1 Team Performance Analyzer
+# F1-Team-Performance-Analyzer
 
 ## Project Description
 
