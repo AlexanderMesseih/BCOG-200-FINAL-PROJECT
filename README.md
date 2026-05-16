@@ -42,6 +42,8 @@ F1-Team-Performance-Analyzer/
 ├── supplement_data.py       # Fills gaps when API is rate-limited
 ├── f1_analyzer.py           # Core analysis functions (all three)
 ├── main.py                  # Runs analyses and generates plots
+├── tests/
+│   └── test_f1_analyzer.py  # Unit tests (pytest)
 └── data/
     ├── race_results.json    # 4,220 race result entries (2015–2024)
     ├── budgets.json         # Estimated constructor budgets by year
@@ -122,7 +124,34 @@ Running `main.py` generates six plots in `output/`:
 
 ---
 
+## Running Tests
+
+The project includes 12 unit tests covering all three core functions.
+Install pytest and run:
+
+```bash
+pip install pytest
+pytest tests/test_f1_analyzer.py -v
+```
+
+Tests verify:
+- `fetch_team_season_stats` returns correct structure, plausible values, handles aliases, and returns errors for missing teams
+- `compare_performance_vs_budget` returns properly ranked and sorted efficiency data with all required keys
+- `detect_condition_tendencies` returns condition/circuit breakdowns and handles missing teams gracefully
+- `get_available_teams` returns sorted lists and filters by year correctly
+
+---
+
 ## Notes
 - Budget figures are estimates from public sources and press reporting — not official
 - 2015–2019 data collected live from FastF1; 2020–2024 supplemented from official FIA records
 - Weather condition classification is based on FIA race reports and broadcast data
+
+---
+
+## AI Attribution
+
+This project was built with assistance from Devin (by Cognition AI). Each
+Python file includes an attribution comment in its module docstring describing
+which parts were AI-generated. All code was reviewed, tested, and verified by
+the author.
