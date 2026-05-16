@@ -147,10 +147,3 @@ Tests verify:
 - 2015–2019 data collected live from FastF1; 2020–2024 supplemented from official FIA records
 - Weather condition classification is based on FIA race reports and broadcast data
 
----
-
-## AI Attribution
-
-Python file includes an attribution comment in its module docstring describing
-which parts were AI-generated. All code was reviewed, tested, and verified by
-the author.
